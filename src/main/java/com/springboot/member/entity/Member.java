@@ -19,6 +19,17 @@ public class Member {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long memberId;
 
+    @OneToOne(mappedBy = "member", cascade = CascadeType.ALL)
+    private Stamp stamp;
+
+    public void setStamp(Stamp stamp) {
+        this.stamp = stamp;
+
+        if(stamp.getMember() != this) {
+            stamp.setMember(this);
+        }
+    }
+
     @Column(nullable = false, updatable = false, unique = true)
     private String email;
 
@@ -52,8 +63,11 @@ public class Member {
         this.phone = phone;
     }
 
-    public void addOrder(Order order) {
+    public void setOrder(Order order) {
         orders.add(order);
+        if(order.getMember() != this) {
+            order.setMember(this);
+        }
     }
 
     // 추가 된 부분

@@ -3,6 +3,7 @@ package com.springboot.order.dto;
 import com.springboot.member.entity.Member;
 import com.springboot.order.entity.Order;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
@@ -10,6 +11,7 @@ import java.util.List;
 
 @Getter
 @Setter
+@NoArgsConstructor
 public class OrderResponseDto {
     private long orderId;
     private long memberId;
